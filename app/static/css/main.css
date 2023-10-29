@@ -1,0 +1,40 @@
+.avatar-container {
+    position: relative;
+}
+.avatar-image {
+    width: 100%;
+    height: auto;
+}
+
+.avatar-text-overlay {
+    position: absolute;
+    left: 50%; /* Adjust horizontal position as needed */
+    transform: translate(-50%, -100%);
+    padding: 10px; /* Adjust padding as needed */
+    /*color: white; !* Text color *!*/
+    text-align: right;
+}
+
+.avatar-title-italic {
+    font-size: 2rem;
+    /*font-weight: bold;*/
+    font-style: italic;
+}
+
+.avatar-subtitle {
+    font-size: 1.5rem;
+}
+
+.contact-person-box {
+    font-size: 1.5rem;
+    background-color: #eccd8a
+}
+
+.footer-text {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.edit-button {
+    margin-bottom: 4rem;
+}

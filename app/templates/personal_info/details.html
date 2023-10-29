@@ -1,0 +1,45 @@
+{% extends "/base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    {% if current_user %}
+        <div class="edit-button">
+            <a href="{{ url_for('personal_info.personal_info_edit', token=token) }}" class="button is-primary is-large is-pulled-right">
+               <b>Edit</b>
+            </a>
+        </div>
+    {% endif %}
+    <div class="box">
+        <div class="image-container">
+            <img class="avatar-image" src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="My Image">
+            <div class="avatar-text-overlay">
+                <h1 class="avatar-title-italic"><em>Hello,</em></h1>
+                <h2 class="avatar-subtitle">My name is <b>{{personal_info.name}}</b></h2>
+            </div>
+        </div>
+
+        <p class="avatar-title-italic" >Please,</p>
+        <p class="avatar-subtitle" >CALL MY PARENTS:</p>
+        <br>
+
+        <div class="box contact-person-box">
+            {{personal_info.contact_phone}} {{personal_info.contact_name}}
+        </div>
+
+        {% if personal_info.extra_contact_phone %}
+            <div class="box contact-person-box">
+                {{personal_info.extra_contact_phone}} {{personal_info.extra_contact_name}}
+            </div>
+        {% endif %}
+
+        {% if personal_info.description %}
+            <div class="box">
+                {{personal_info.description}}
+            </div>
+        {% endif %}
+
+        <p class="footer-text" >Thank you!</p>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "/base.html" %}
+{% from "partials/_render_field.html" import render_field %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Sign Up</h3>
+    <h2 class="subtitle">Please sign up to continue or <a href="{{ url_for('auth.login', token=token) }}"><strong><u>sign in</u><strong></a></h2>
+    <div class="box">
+        <form method="POST" action="{{ url_for('auth.signup_post', token=token) }}">
+            {{ form.csrf_token }}
+             {{ render_field(form.email, class="input is-large" + (" is-danger" if form.email.errors else ""), type="email", placeholder=form.email.label.text, autofocus="") }}
+            {{ render_field(form.name, class="input is-large" + (" is-danger" if form.name.errors else ""), type="text", placeholder=form.name.label.text, autofocus="") }}
+            {{ render_field(form.password, class="input is-large" + (" is-danger" if form.password.errors else ""), type="text", placeholder=form.password.label.text) }}
+
+            {{ form.submit(class="button is-block is-info is-large is-fullwidth", value=form.submit.label.text) }}
+        </form>
+    </div>
+</div>
+{% endblock %}

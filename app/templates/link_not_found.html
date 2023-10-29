@@ -1,0 +1,15 @@
+{% extends "/base.html" %}
+{% from "partials/_render_field.html" import render_field %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <article class="message is-danger">
+      <div class="message-header">
+        <p>Link not found</p>
+      </div>
+      <div class="message-body">
+        <strong>The link doesn't exist. Please, scan it.<p>Do not enter it manually.</p></strong>
+      </div>
+    </article>
+</div>
+{% endblock %}

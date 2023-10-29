@@ -1,0 +1,22 @@
+{% extends "/base.html" %}
+{% from "partials/_render_field.html" import render_field %}
+{% from "partials/_render_labeled_field.html" import render_labeled_field %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <div class="box">
+        <form method="POST" action="{{ url_for('personal_info.personal_info_post', token=token) }}">
+            {{ form.csrf_token }}
+
+            {{ render_labeled_field(form.name, class="input is-large" + (" is-danger" if form.name.errors else ""), autofocus="") }}
+            {{ render_labeled_field(form.contact_name, class="input is-large" + (" is-danger" if form.contact_name.errors else "")) }}
+            {{ render_labeled_field(form.contact_phone, class="input is-large" + (" is-danger" if form.contact_phone.errors else "")) }}
+            {{ render_labeled_field(form.extra_contact_name, class="input is-large" + (" is-danger" if form.extra_contact_name.errors else "")) }}
+            {{ render_labeled_field(form.extra_contact_phone, class="input is-large" + (" is-danger" if form.extra_contact_phone.errors else "")) }}
+            {{ render_labeled_field(form.description, rows="5", class="textarea is-large" + (" is-danger" if form.description.errors else "")) }}
+
+            {{ form.submit(class="button is-block is-info is-large is-fullwidth", value=form.submit.label.text) }}
+        </form>
+    </div>
+</div>
+{% endblock %}
