@@ -8,7 +8,8 @@
         <form method="POST" action="{{ url_for('personal_info.personal_info_post', token=token) }}">
             {{ form.csrf_token }}
 
-            {{ render_labeled_field(form.name, class="input is-large" + (" is-danger" if form.name.errors else ""), autofocus="") }}
+            {{ render_labeled_field(form.product_title, class="input is-large" + (" is-danger" if form.product_title.errors else ""), autofocus="") }}
+            {{ render_labeled_field(form.name, class="input is-large" + (" is-danger" if form.name.errors else "")) }}
             {{ render_labeled_field(form.contact_name, class="input is-large" + (" is-danger" if form.contact_name.errors else "")) }}
             {{ render_labeled_field(form.contact_phone, class="input is-large" + (" is-danger" if form.contact_phone.errors else "")) }}
             {{ render_labeled_field(form.extra_contact_name, class="input is-large" + (" is-danger" if form.extra_contact_name.errors else "")) }}

@@ -1,0 +1,53 @@
+{% extends "/base.html" %}
+
+{% block content %}
+<div class="column is-7 is-offset-2">
+    <article class="panel products-panel">
+      <p class="panel-heading products-panel-heading">
+        Products
+      </p>
+        {% for personal_info in personal_infos %}
+          <div class="panel-block products-panel-block">
+            <p class="control has-icons-right">
+              <a class="products-panel-link" href="{{ url_for('personal_info.personal_info_details', token=personal_info.link.token) }}">
+                {{personal_info.product_title}}
+              </a>
+
+              <span class="icon is-right products-panel-delete">
+                  <div id="modal-{{personal_info.link.token}}" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                      <header class="modal-card-head">
+                        <p class="modal-card-title">Delete {{personal_info.product_title}}</p>
+                        <button class="delete" aria-label="close"></button>
+                      </header>
+                      <section class="modal-card-body">
+                        Do you want to delete {{personal_info.product_title}} product ?
+                        </br>
+                        The associated info will be wiped out. And the product will be removed from the list.
+                      </section>
+                      <footer class="modal-card-foot">
+                        <form method="post" class="action-form-button" action="{{ url_for('personal_info.personal_info_delete', token=personal_info.link.token) }}">
+                          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                          <button class="button is-danger">Delete</button>
+                        </form>
+
+                        <button class="button">Cancel</button>
+                      </footer>
+                    </div>
+                  </div>
+
+                  <button class="delete products-panel-delete-button is-large js-modal-trigger" data-target="modal-{{personal_info.link.token}}" title="Delete product's data and remove it from the list"></button>
+              </span>
+            </p>
+          </div>
+        {% endfor %}
+
+        {% if not personal_infos %}
+          <div class="panel-block products-panel-block">
+            There is no products.
+          </div>
+        {% endif %}
+    </article>
+</div>
+{% endblock %}

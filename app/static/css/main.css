@@ -38,3 +38,45 @@
 .edit-button {
     margin-bottom: 4rem;
 }
+
+.products-panel-heading {
+    background-color: #485fc7;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+.products-panel-block {
+    color: hsl(0, 0%, 4%)!important;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.products-panel-delete {
+    height: 2rem!important;
+}
+
+.products-panel-delete-button {
+    background-color: hsl(348, 86%, 61%);
+}
+
+.products-panel-link {
+    font-size: 1.5em;
+    padding: 0.5em;
+    padding-right: 2rem;
+}
+.products-panel-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-text {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.loged-in-user-name {
+    line-height: 2.3em
+}
+
+.action-form-button {
+    margin-right: 10px;
+}

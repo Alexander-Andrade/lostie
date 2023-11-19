@@ -8,6 +8,7 @@
     <title>Flask Auth Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/delete_modal.js') }}"></script>
 </head>
 
 <body>
@@ -17,14 +18,21 @@
             <nav class="navbar">
                 <div class="container">
                     <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="start">
+                            {% if current_user %}
+                                <a href="{{ url_for('products.list') }}" class="navbar-item navbar-text">
+                                    Products
+                                </a>
+                            {% endif %}
+                        </div>
                         <div class="navbar-end">
-                            {% if not current_user %}
-                                <a href="{{ url_for('auth.login', token=token) }}" class="navbar-item">
+                            {% if not current_user and token  %}
+                                <a href="{{ url_for('auth.login', token=token) }}" class="navbar-item navbar-text">
                                     Login
                                 </a>
-                            {% else %}
-                                <div style="line-height: 3.5em">{{current_user.name}}</div>
-                                <a href="{{ url_for('auth.logout', token=token) }}" class="navbar-item">
+                            {% elif current_user %}
+                                <div class="navbar-item navbar-text">{{current_user.name}}</div>
+                                <a href="{{url_for('auth.logout', token=token) if token else url_for('auth.logout_without_token')}}" class="navbar-item navbar-text">
                                     Logout
                                 </a>
                             {% endif %}
@@ -41,6 +49,9 @@
             </div>
         </div>
     </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

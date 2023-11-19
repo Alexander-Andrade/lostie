@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.auth import auth_blueprint
+from app.auth.decorators import login_required
 from app.forms.login_form import LoginForm
 from app.forms.signup_form import SignupForm
 from app.models.user import User
@@ -11,6 +12,7 @@ from app.extensions import db
 @auth_blueprint.route('/smartshield/<token>')
 def smartshield(token):
     link = Link.query.filter_by(token=token).first()
+
     if not link:
         return render_template('link_not_found.html')
     if not link.personal_info and 'user_id' not in session:
@@ -76,3 +78,15 @@ def login_post(token):
 def logout(token):
     session.pop('user_id')
     return redirect(url_for('personal_info.personal_info_details', token=token))
+
+
+@auth_blueprint.route('/logout')
+@login_required
+def logout_without_token():
+    session.pop('user_id')
+    return redirect(url_for('auth.logged_out'))
+
+
+@auth_blueprint.route('/logged_out')
+def logged_out():
+    return render_template('auth/logged_out.html')

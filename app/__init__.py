@@ -3,6 +3,7 @@ from flask_wtf import CSRFProtect
 from config import Config
 from app.personal_info import personal_blueprint
 from app.auth import auth_blueprint
+from app.products import products_blueprint
 from app.extensions import db, migrate, csrf
 
 
@@ -21,6 +22,7 @@ def create_app(config_class=Config):
 
     app.register_blueprint(personal_blueprint)
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(products_blueprint)
 
     return app
 

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="column is-4 is-offset-4">
-    {% if current_user %}
+    {% if current_user == personal_info.user %}
         <div class="edit-button">
             <a href="{{ url_for('personal_info.personal_info_edit', token=token) }}" class="button is-primary is-large is-pulled-right">
                <b>Edit</b>
@@ -40,6 +40,5 @@
 
         <p class="footer-text" >Thank you!</p>
     </div>
-
 </div>
 {% endblock %}

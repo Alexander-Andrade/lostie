@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Length, Email
 
 
 class PersonalInfoForm(FlaskForm):
+    product_title = StringField('Product Title', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     contact_name = StringField('Contact Name', validators=[DataRequired()])
     contact_phone = StringField('Contact Phone', validators=[DataRequired()])
