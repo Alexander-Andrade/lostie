@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_wtf import CSRFProtect
 from config import Config
@@ -14,7 +16,9 @@ def create_app(config_class=Config):
     from dotenv import load_dotenv
     load_dotenv()
 
-    app.config.from_object(config_class)
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    # app.config.from_object(config_class)
 
     db.init_app(app)
     migrate.init_app(app)

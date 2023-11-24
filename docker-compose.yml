@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: flask run -h 0.0.0.0
+    volumes:
+      - ./instance/:/usr/src/app/instance/
+    ports:
+      - 5001:5000
+    env_file:
+      - ./.env
