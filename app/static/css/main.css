@@ -15,6 +15,13 @@
     text-align: right;
 }
 
+@media only screen and (max-width: 480px) {
+    .avatar-text-overlay {
+        left: 40%; /* Adjust horizontal position as needed */
+        transform: translate(-20%, -90%);
+    }
+}
+
 .avatar-title-italic {
     font-size: 2rem;
     /*font-weight: bold;*/
